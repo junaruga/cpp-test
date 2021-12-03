@@ -21,16 +21,16 @@ LIBS =
 .c.o :
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $< -o $@
 
-.PHONY : all
+.PHONY: all
 all : $(EXE)
 
 $(EXE) : $(OBJS) main.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LIBS)
 
-.PHONY : clean
+.PHONY: clean
 clean :
 	rm -f *.o $(EXE)
 
-.PHONY : test
+.PHONY: test
 test : all
 	echo "Run the test"

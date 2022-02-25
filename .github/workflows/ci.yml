@@ -1,0 +1,16 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: ${{ matrix.os }} test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+        include:
+          # focal
+          - os: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: make -C src test

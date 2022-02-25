@@ -34,3 +34,4 @@ clean :
 .PHONY: test
 test : all
 	echo "Run the test"
+	./$(EXE)

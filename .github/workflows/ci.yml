@@ -13,4 +13,12 @@ jobs:
           - os: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: mrtazz/checkmake
+          path: vendor/checkmake
+      - name: Build checkmake
+        run: docker build --build-arg BUILDER_NAME='Jun Aruga' --build-arg BUILDER_EMAIL='jun.aruga@gmail.com' -t checkmake vendor/checkmake
+      - name: Run checkmake
+        run: docker run -v "$PWD/src/Makefile":/Makefile checkmake
       - run: make -C src test
